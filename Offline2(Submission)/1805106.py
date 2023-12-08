@@ -368,10 +368,10 @@ def preprocess2(args):
     test_set = np.concatenate([np.array(modified_test_data).reshape(-1, len(test_data[0])), np.array(rem_test_data[:limit]).reshape(-1, len(test_data[0]))], axis=0)
     #############
 
-    print("Initial split sizes")
-    print("train set size:", len(train_set))
-    print("test set size:", len(test_set))
-    print("\n--------------------\n")
+    # print("Initial split sizes")
+    # print("train set size:", len(train_set))
+    # print("test set size:", len(test_set))
+    # print("\n--------------------\n")
     header = train_set[0]
     # split train set features with numerical and categorical features
     train_set_num = [[] for i in range(len(train_set))]
@@ -723,6 +723,7 @@ class Model:
     def logistic_function(self, x):
         return 1/(1+np.exp(-x))
     
+    
     def train_all(self, X, Y, W):
         # print(len(X), "examples")
         # np.random.seed(np.random.randint(0, 1000))
@@ -737,7 +738,11 @@ class Model:
 
         for i in range(self.epochs):
             np.random.shuffle(ind)
-            dup_weight = self.weight.copy()
+            # temp = np.concatenate([X[ind[:minibatch]], np.ones((minibatch, 1))], axis=1)
+            # temp2 = np.matmul(temp, self.weight.T)
+            # for j in range(len(temp)):
+            #     self.weight = self.weight + alpha * W[ind[j]] * (Y[ind[j]] - self.logistic_function(temp2[j])) * temp[j]
+            dup_weight = np.copy(self.weight)
             for l in range(minibatch):
                 j = ind[l]
                 temp = np.concatenate([X[j], [1]])
@@ -923,8 +928,10 @@ def adaboost(X, Y, Learner, args):
         w = [w[j]/sum(w) for j in range(n)]
         z.append(np.log((1-error)/error))
         i += 1
+        print(f"Training complete {i}/{k}", end="\r")
         # print("Learner", i, "error:", error)
-    
+    print("Training complete          ")
+    print("\n--------------------\n")
     z = [z[i]/sum(z) for i in range(len(z))]
     return h, z
 

@@ -77,10 +77,10 @@ def preprocess(args):
     test_set = np.concatenate([np.array(modified_test_data).reshape(-1, len(test_data[0])), np.array(rem_test_data[:limit]).reshape(-1, len(test_data[0]))], axis=0)
     #############
 
-    print("Initial split sizes")
-    print("train set size:", len(train_set))
-    print("test set size:", len(test_set))
-    print("\n--------------------\n")
+    # print("Initial split sizes")
+    # print("train set size:", len(train_set))
+    # print("test set size:", len(test_set))
+    # print("\n--------------------\n")
     header = train_set[0]
     # split train set features with numerical and categorical features
     train_set_num = [[] for i in range(len(train_set))]

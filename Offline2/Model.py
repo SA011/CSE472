@@ -19,7 +19,11 @@ class Model:
 
         for i in range(self.epochs):
             np.random.shuffle(ind)
-            dup_weight = self.weight.copy()
+            # temp = np.concatenate([X[ind[:minibatch]], np.ones((minibatch, 1))], axis=1)
+            # temp2 = np.matmul(temp, self.weight.T)
+            # for j in range(len(temp)):
+            #     self.weight = self.weight + alpha * W[ind[j]] * (Y[ind[j]] - self.logistic_function(temp2[j])) * temp[j]
+            dup_weight = np.copy(self.weight)
             for l in range(minibatch):
                 j = ind[l]
                 temp = np.concatenate([X[j], [1]])

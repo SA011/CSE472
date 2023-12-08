@@ -106,7 +106,9 @@ def adaboost(X, Y, Learner, args):
         w = [w[j]/sum(w) for j in range(n)]
         z.append(np.log((1-error)/error))
         i += 1
+        print(f"Training complete {i}/{k}", end="\r")
         # print("Learner", i, "error:", error)
-    
+    print("Training complete          ")
+    print("\n--------------------\n")
     z = [z[i]/sum(z) for i in range(len(z))]
     return h, z
