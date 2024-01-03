@@ -1,0 +1,219 @@
+def model1(input_size, output_size):
+    model = FNN(input_size, init_layer=BatchNormalizationLayer)
+    model.add_layer(DenseLayer, 512)
+    model.add_layer(SigmoidLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.5)
+    model.add_layer(DenseLayer, 256)
+    model.add_layer(ReluLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.2)
+    model.add_layer(DenseLayer, 128)
+    model.add_layer(ReluLayer)
+    model.add_layer(DenseLayer, output_size)
+    model.add_layer(SoftmaxLayer)
+    return model
+    
+Learning rate = 0.005
+Training result:
+=========================================
+Loss = 57675.94474513047
+Accuracy = 90.39027149321267%
+F1 Macro = 0.9038034494785898
+=========================================
+Validation result:
+=========================================
+Loss = 13293.709592980205
+Accuracy = 88.71794871794872%
+F1 Macro = 0.886621210416592
+=========================================
+Learning rate = 0.001
+Training result:
+=========================================
+Loss = 17398.527300359485
+Accuracy = 95.7777149321267%
+F1 Macro = 0.9578801263078401
+=========================================
+Validation result:
+=========================================
+Loss = 10405.09819828685
+Accuracy = 89.85042735042735%
+F1 Macro = 0.8982843817436184
+=========================================
+Learning rate = 0.0005
+Training result:
+=========================================
+Loss = 20436.94031519681
+Accuracy = 95.34407993966818%
+F1 Macro = 0.9535111063865228
+=========================================
+Validation result:
+=========================================
+Loss = 8643.875387552891
+Accuracy = 90.19764957264957%
+F1 Macro = 0.9015869552114502
+=========================================
+Learning rate = 0.0001
+Training result:
+=========================================
+Loss = 52727.01076914996
+Accuracy = 89.51640271493213%
+F1 Macro = 0.8951757056784823
+=========================================
+Validation result:
+=========================================
+Loss = 10800.593643045313
+Accuracy = 87.76175213675214%
+F1 Macro = 0.877323161061404
+=========================================
+
+def model2(input_size, output_size):
+    model = FNN(input_size, init_layer=BatchNormalizationLayer)
+    model.add_layer(DenseLayer, 512, optimizer='Nadam')
+    model.add_layer(ReluLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.5)
+    model.add_layer(DenseLayer, 256, optimizer='Nadam')
+    model.add_layer(SigmoidLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.2)
+    model.add_layer(BatchNormalizationLayer)
+    model.add_layer(DenseLayer, 128, optimizer='Nadam')
+    model.add_layer(ReluLayer)
+    model.add_layer(DenseLayer, output_size, optimizer='Nadam')
+    model.add_layer(SoftmaxLayer)
+    return model
+    
+Learning rate = 0.005
+Training result:
+=========================================
+Loss = 69637.78990185304
+Accuracy = 85.6787330316742%
+F1 Macro = 0.8566637856524666
+=========================================
+Validation result:
+=========================================
+Loss = 13191.642298370727
+Accuracy = 85.02136752136752%
+F1 Macro = 0.8499405865633538
+=========================================
+Learning rate = 0.001
+Training result:
+=========================================
+Loss = 20124.47157118273
+Accuracy = 95.41289592760181%
+F1 Macro = 0.9542380645732579
+=========================================
+Validation result:
+=========================================
+Loss = 9521.484242675722
+Accuracy = 90.44337606837607%
+F1 Macro = 0.9042759084476455
+=========================================
+Learning rate = 0.0005
+Training result:
+=========================================
+Loss = 15426.470468438787
+Accuracy = 96.31410256410257%
+F1 Macro = 0.9632598362587744
+=========================================
+Validation result:
+=========================================
+Loss = 9655.921052492973
+Accuracy = 90.38995726495726%
+F1 Macro = 0.9037078271501963
+=========================================
+Learning rate = 0.0001
+Training result:
+=========================================
+Loss = 28820.514483528845
+Accuracy = 93.90648567119155%
+F1 Macro = 0.9391770011456659
+=========================================
+Validation result:
+=========================================
+Loss = 8352.092762051629
+Accuracy = 90.14957264957265%
+F1 Macro = 0.9013998422610994
+=========================================
+
+def model3(input_size, output_size):
+    model = FNN(input_size, init_layer=BufferLayer)
+    model.add_layer(DenseLayer, 512, optimizer='None')
+    model.add_layer(ReluLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.5)
+    model.add_layer(DenseLayer, 128, optimizer='None')
+    model.add_layer(ReluLayer)
+    model.add_layer(DropoutLayer, dropout_rate = 0.2)
+    model.add_layer(DenseLayer, 128, optimizer='None')
+    model.add_layer(SigmoidLayer)
+    model.add_layer(DenseLayer, output_size, optimizer='None')
+    model.add_layer(SoftmaxLayer)
+    return model
+    
+Learning rate = 0.005
+Training result:
+=========================================
+Loss = 36518.70666950513
+Accuracy = 92.22096530920061%
+F1 Macro = 0.922191285095165
+=========================================
+Validation result:
+=========================================
+Loss = 8418.641913210895
+Accuracy = 90.625%
+F1 Macro = 0.9060503649778434
+=========================================
+Learning rate = 0.001
+Training result:
+=========================================
+Loss = 41349.86972653801
+Accuracy = 91.6365007541478%
+F1 Macro = 0.9164196064533771
+=========================================
+Validation result:
+=========================================
+Loss = 8748.454882594573
+Accuracy = 89.95192307692308%
+F1 Macro = 0.8992914076685571
+=========================================
+Learning rate = 0.0005
+Training result:
+=========================================
+Loss = 64378.60582763141
+Accuracy = 87.5065987933635%
+F1 Macro = 0.8749791307592815
+=========================================
+Validation result:
+=========================================
+Loss = 12133.177286229298
+Accuracy = 86.47435897435898%
+F1 Macro = 0.864302035781998
+=========================================
+Learning rate = 0.0001
+Training result:
+=========================================
+Loss = 171842.31500115572
+Accuracy = 68.82824283559577%
+F1 Macro = 0.6851308869063081
+=========================================
+Validation result:
+=========================================
+Loss = 30655.54809442303
+Accuracy = 68.5042735042735%
+F1 Macro = 0.682108049702131
+=========================================
+
+Best model: Model 3 with learning rate = 0.005
+Training result:
+=========================================
+Loss = 25598.451924386565
+Accuracy = 93.9093137254902%
+F1 Macro = 0.9391492557501017
+=========================================
+Validation result:
+=========================================
+Loss = 8544.841774830547
+Accuracy = 89.88247863247864%
+F1 Macro = 0.8983906046329283
+=========================================
+
+    
+    
+
