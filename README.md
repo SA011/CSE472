@@ -7,7 +7,8 @@
  - Learned about data pre-processing
  - Performance measure : Accuracy, Sensitivity, Specificity, Precision, False discovery rate, F1 score
  - Measured performance changing boosting rounds  
-- Feed Forward Network from Scratch
+ 
+- Feed Forward Neural Network from Scratch
  - Activation Function : Relu, Softmax, tanh
  - Loss Function : L1 Loss, L2 Loss, Binary Cross Entropy Loss  
 
