@@ -1,6 +1,9 @@
 ## **`CSE 472` : Machine Learning Sessional**
 
-### 4 basic tasks  : Matrix Transformation, Eigen Decomposition & Image Reconstruction using SVD
+### Offline 1 : 3 Tasks
+ - Matrix Transformation
+ - Eigen Decomposition 
+ - Image Reconstruction using SVD
 
 
 ### Logistic Regression and AdaBoost for classification
